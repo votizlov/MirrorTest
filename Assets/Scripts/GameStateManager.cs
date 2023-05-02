@@ -18,6 +18,7 @@ public class GameStateManager : NetworkRoomManager
         ShuffleStartPositions(); //randomize roundRobin spawn strategy
         Instance = this;
         _playerScores = new List<PlayerScore>();
+        Cursor.lockState = CursorLockMode.Confined;
         Application.targetFrameRate = 60;
     }
 
