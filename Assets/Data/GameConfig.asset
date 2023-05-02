@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 086dcbe33856f38468a8a78943de567e, type: 3}
+  m_Name: GameConfig
+  m_EditorClassIdentifier: 
+  DashLength: 10
+  TaggedDuration: 3
+  DashCounttoWin: 3
+  DashEffect: {fileID: 2184334616080201273, guid: c435215407d2eea45b38d6c4a1182e96, type: 3}
