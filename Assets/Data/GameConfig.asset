@@ -14,5 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DashLength: 10
   TaggedDuration: 3
-  DashCounttoWin: 3
-  DashEffect: {fileID: 2184334616080201273, guid: c435215407d2eea45b38d6c4a1182e96, type: 3}
+  DashCounttoWin: 2

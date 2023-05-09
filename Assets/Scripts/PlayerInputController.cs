@@ -12,7 +12,7 @@ public class PlayerInputController : NetworkBehaviour
     [SerializeField] private Transform _cameraPivot;
     [SerializeField] private Transform _camera;
     [SerializeField] private CharacterController _characterController;
-    private float _maxVerticalCamAngle = 45;
+    private float _maxVerticalCamAngle = 30;
     private float _currentVecticalAngle = 0;
 
     public override void OnStartAuthority()
@@ -33,7 +33,7 @@ public class PlayerInputController : NetworkBehaviour
 
     void Update()
     {
-        float h = horizontalSpeed * Input.GetAxis("Mouse X");
+        float h = -horizontalSpeed * Input.GetAxis("Mouse X");
         float v = verticalSpeed * Input.GetAxis("Mouse Y");
         if (Math.Abs(_currentVecticalAngle + v) >= _maxVerticalCamAngle)
             v = 0;
