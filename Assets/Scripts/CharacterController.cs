@@ -1,22 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Mirror;
+using Fusion;
 using UnityEngine;
 
 public class CharacterController : NetworkBehaviour
 {
-    [SyncVar] public float dashDistance = 10;
-    [SyncVar] public float dashTime = 0.5f;
-    [SyncVar] public float tagDuration = 3;
+     public float dashDistance = 10;
+     public float dashTime = 0.5f;
+     public float tagDuration = 3;
     public GameObject dashEffectPrefab;
     [HideInInspector] public Vector3 movementVector;
     [SerializeField] Rigidbody _rigidbody;
     [SerializeField] MeshRenderer _renderer;
-    [SerializeField] private PlayerScore score;
+    [SerializeField] private PlayerData data;
     //states
-    [SyncVar] private bool isDashing = false;
-    [SyncVar] public bool isTagged = false;
+     private bool isDashing = false;
+     public bool isTagged = false;
 
     public void Dash()
     {
@@ -25,14 +25,12 @@ public class CharacterController : NetworkBehaviour
         StartCoroutine(DashCoroutine());
     }
 
-    [Command]
     private void SpawnDashEffect()
     {
         GameObject temp = Instantiate(dashEffectPrefab, transform.position, Quaternion.LookRotation(-movementVector),transform);
-        NetworkServer.Spawn(temp);
+        //NetworkServer.Spawn(temp);
     }
 
-    [ClientRpc]
     public void Tag()
     {
         if (isTagged)
@@ -84,7 +82,6 @@ public class CharacterController : NetworkBehaviour
         _rigidbody.MovePosition(_rigidbody.transform.position + movementVector);
     }
 
-    [ServerCallback]
     private void OnCollisionEnter(Collision collision)
     {
         if (isDashing && collision.gameObject.CompareTag("Player"))
@@ -93,7 +90,7 @@ public class CharacterController : NetworkBehaviour
             if (t.isTagged)
                 return;
             t.Tag();
-            score.score++;
+            //data.score++;
         }
     }
 }

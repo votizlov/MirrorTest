@@ -5,16 +5,34 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Menu.unity
+  - enabled: 0
+    path: Assets/Scenes/Tags/Menu.unity
     guid: 7f592e033e1ce56429cc51d4f6f81520
-  - enabled: 1
-    path: Assets/Scenes/Room.unity
+  - enabled: 0
+    path: Assets/Scenes/Tags/Room.unity
     guid: fcda688a33c535a4fb307c02163855ab
-  - enabled: 1
-    path: Assets/Scenes/Game.unity
+  - enabled: 0
+    path: Assets/Scenes/Tags/Game.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 0
     path: Assets/Mirror/Examples/Discovery/Scenes/Scene.unity
     guid: 90fddc74fa21c423599167eb28b09dd1
+  - enabled: 1
+    path: Assets/Scenes/Shooter/Menu.unity
+    guid: 632e6ae89cbf82648a3176ed311e23d8
+  - enabled: 1
+    path: Assets/Scenes/Shooter/Game.unity
+    guid: adcd87828d204284f9323dbd71181abf
+  - enabled: 0
+    path: Assets/Scenes/Shooter/Loading.unity
+    guid: 68143455d7027df4da1f14fc84098f28
+  - enabled: 0
+    path: Assets/Scenes/Shooter/Lobby.unity
+    guid: d5e4cd124fe84c244b421aaa39c154c2
+  - enabled: 1
+    path: Assets/PhotonSample/Asteroids-Host-Simple/Scenes/AsteroidsSimple-Game.unity
+    guid: ba2d6bee897e95247b9dfc3a5b8680a6
+  - enabled: 1
+    path: Assets/PhotonSample/Asteroids-Host-Simple/Scenes/AsteroidsSimple-Menu.unity
+    guid: 8dc9863d69bdf2846b0c9c3e35d3dbee
   m_configObjects: {}
