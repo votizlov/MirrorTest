@@ -14,6 +14,8 @@ public class PlayerInputController : NetworkBehaviour
     [SerializeField] private CharacterController _characterController;
     private float _maxVerticalCamAngle = 30;
     private float _currentVecticalAngle = 0;
+    private float x = 0.0f;
+    private float y = 0.0f;
 
     public override void OnStartAuthority()
     {
@@ -21,6 +23,9 @@ public class PlayerInputController : NetworkBehaviour
         _characterController.enabled = true;
         this.enabled = true;
         _camera.gameObject.SetActive(true);
+        Vector3 angles = _cameraPivot.eulerAngles;
+        x = angles.y;
+        y = angles.x;
     }
 
     public override void OnStopAuthority()
@@ -33,14 +38,13 @@ public class PlayerInputController : NetworkBehaviour
 
     void Update()
     {
-        float h = -horizontalSpeed * Input.GetAxis("Mouse X");
-        float v = verticalSpeed * Input.GetAxis("Mouse Y");
-        if (Math.Abs(_currentVecticalAngle + v) >= _maxVerticalCamAngle)
-            v = 0;
-        _currentVecticalAngle += v;
-        _cameraPivot.Rotate(v, h, 0);
+        x += horizontalSpeed * Input.GetAxis("Mouse X");
+        y += verticalSpeed * Input.GetAxis("Mouse Y");
+        y = ClampAngle(y, -_maxVerticalCamAngle, _maxVerticalCamAngle);
+        
+        Quaternion rot = Quaternion.Euler(y,x,0);
 
-        _camera.LookAt(_cameraPivot);
+        _cameraPivot.rotation = rot;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -51,5 +55,14 @@ public class PlayerInputController : NetworkBehaviour
         float vMove = Input.GetAxis("Vertical");
         var t = _camera.forward * vMove + _camera.right * hMove;
         _characterController.movementVector = new Vector3(t.x, 0, t.z);
+    }
+    
+    private float ClampAngle(float angle, float min, float max)
+    {
+        if (angle < -360F)
+            angle += 360F;
+        if (angle > 360F)
+            angle -= 360F;
+        return Mathf.Clamp(angle, min, max);
     }
 }
