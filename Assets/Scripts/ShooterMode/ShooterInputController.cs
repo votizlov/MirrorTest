@@ -55,18 +55,18 @@ public class ShooterInputController : NetworkBehaviour
         if (GetInput<PlayerInput>(out var input) == false) return;
         if (input.Buttons.WasPressed(_buttonsPrevious, SpaceshipButtons.Fire))
         {
-            _characterController.Shoot();
+            Shoot();
             _buttonsPrevious = input.Buttons;
         }
+        float hMove = horizontalSpeed * _floatingJoystick.Horizontal;
+        float vMove = verticalSpeed * _floatingJoystick.Vertical;
+        var t = _camera.forward * vMove + _camera.right * hMove;
+        _characterController.movementVector = new Vector3(t.x, 0, t.z);
     }
 
     void Update()
     {
         _camera.LookAt(_cameraPivot);
 
-        float hMove = horizontalSpeed * _floatingJoystick.Horizontal;
-        float vMove = verticalSpeed * _floatingJoystick.Vertical;
-        var t = _camera.forward * vMove + _camera.right * hMove;
-        _characterController.movementVector = new Vector3(t.x, 0, t.z);
     }
 }

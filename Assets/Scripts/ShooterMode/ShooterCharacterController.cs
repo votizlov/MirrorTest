@@ -29,9 +29,8 @@ public class ShooterCharacterController : NetworkBehaviour
 
     private void SpawnShootEffect()
     {
-        GameObject temp = Instantiate(bulletEffectPrefab, _bulletSource.position,
-            Quaternion.LookRotation(-movementVector));
-        Runner.Spawn(temp);
+        Runner.Spawn(bulletEffectPrefab, _bulletSource.position,
+            _bulletSource.rotation,Object.InputAuthority);
     }
 
     public override void FixedUpdateNetwork()
@@ -71,7 +70,7 @@ public class ShooterCharacterController : NetworkBehaviour
     {
         if (movementVector == Vector3.zero) return;
 
-        movementVector = movementVector.normalized * 10 * Time.fixedDeltaTime;
+        movementVector = movementVector.normalized * 10 * Runner.DeltaTime;
 
         _rigidbody.MovePosition(_rigidbody.transform.position + movementVector);
         _rigidbody.MoveRotation(Quaternion.LookRotation(movementVector.normalized));

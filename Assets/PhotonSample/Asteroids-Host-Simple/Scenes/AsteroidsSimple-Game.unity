@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _spaceshipNetworkPrefab:
-    RawGuidValue: 8d807d0379d22ae49b964bd8b3ebced5
+    RawGuidValue: 775dd0a15ad25a544b33ad40ef0da1f0
 --- !u!114 &374345281
 MonoBehaviour:
   m_ObjectHideFlags: 0
